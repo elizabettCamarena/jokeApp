@@ -10,12 +10,13 @@ function App() {
   const getNewJoke = async () => {
     try {
       setLoading(true);
-      const response = await fetch("https://icanhazdajoke.com/", {
+      const response = await fetch("https://icanhazdadjoke.com/", {
         headers: {
           Accept: "application/json",
         },
       });
       const data = await response.json();
+      console.log(data); 
       setText(data.joke);
       setType("joke");
     } catch (error) {
@@ -48,7 +49,9 @@ function App() {
               type === "joke" ? { color: "#61dafb" } : { color: "#428022" }
             }
           >
-            {`${icon} - ${text}`}
+            {
+              text
+            }
           </p>
         )}
         {error ? <p className="error">{error}</p> : null}
